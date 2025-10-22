@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   { "name": "Facebook", "iconName": "facebook", "value": "facebook" },
   { "name": "twitter", "iconName": "twitter", "value": "twitter" },
   { "name": "google", "iconName": "googleplus", "value": "googleplus" },
+  { "name": "github", "iconName": "github", "value": "github" },
   { "name": "Linkedin", "iconName": "linkedin", "value": "linkedin" }];
 
   roles: Array<Role>;
