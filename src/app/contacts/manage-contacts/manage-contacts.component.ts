@@ -2589,7 +2589,6 @@ export class ManageContactsComponent implements OnInit, AfterViewInit, AfterView
 		this.callInitMethods();
 		/**** user guide ****/
 		this.getMergeTagsForDifferentModules();
-		this.getOliverAgentAccessSettings();
 	}
 
 
@@ -3276,18 +3275,6 @@ export class ManageContactsComponent implements OnInit, AfterViewInit, AfterView
 		} else {
 			return input.toString();
 		}
-	}
-
-	askOliver(selectedListId,listName) {
-	
-	}
-
-	closeAskAI(event: any) {
-		
-	}
-
-	getOliverAgentAccessSettings() {
-		
 	}
 
 }
