@@ -4118,20 +4118,7 @@ export class AddPartnersComponent implements OnInit, OnDestroy {
 					let user = new User();
 					socialPartner.id = i;
 					if (this.validateEmailAddress(response.contacts[i].email)) {
-						socialPartner.emailId = response.contacts[i].email;
-						socialPartner.firstName = response.contacts[i].firstName;
-						socialPartner.lastName = response.contacts[i].lastName;
-
-						socialPartner.country = response.contacts[i].country;
-						socialPartner.city = response.contacts[i].city;
-						socialPartner.state = response.contacts[i].state;
-						socialPartner.postalCode = response.contacts[i].postalCode;
-						socialPartner.address = response.contacts[i].address;
-						socialPartner.company = response.contacts[i].company;
-						socialPartner.title = response.contacts[i].title;
-						socialPartner.mobilePhone = response.contacts[i].mobilePhone;
-
-						this.socialPartnerUsers.push(socialPartner);
+						this.setSocialPartnerData(socialPartner, response, i);
 					}
 				}
 
@@ -4161,6 +4148,23 @@ export class AddPartnersComponent implements OnInit, OnDestroy {
 			this.selectedAddPartnerOption = 12;
 			console.log("Social Contact Users for ConnectWise::" + this.socialPartnerUsers);
 		}
+	}
+
+	private setSocialPartnerData(socialPartner: SocialContact, response: any, i: number) {
+		socialPartner.emailId = response.contacts[i].email;
+		socialPartner.firstName = response.contacts[i].firstName;
+		socialPartner.lastName = response.contacts[i].lastName;
+
+		socialPartner.country = response.contacts[i].country;
+		socialPartner.city = response.contacts[i].city;
+		socialPartner.state = response.contacts[i].state;
+		socialPartner.postalCode = response.contacts[i].postalCode;
+		socialPartner.address = response.contacts[i].address;
+		socialPartner.company = response.contacts[i].company;
+		socialPartner.title = response.contacts[i].title;
+		socialPartner.mobilePhone = response.contacts[i].mobilePhone;
+
+		this.socialPartnerUsers.push(socialPartner);
 	}
 
 	//XNFR-230
