@@ -1287,11 +1287,11 @@ export class ManageDealsComponent implements OnInit {
     if (this.activeCRMDetails.type === 'SALESFORCE') {
       this.syncLeadsWithSalesforce();
     } else {
-      this.syncLeadsWithActiveCRM();
+      this.syncDealsWithActiveCRM();
     }
   }
 
-  syncLeadsWithActiveCRM() {
+  syncDealsWithActiveCRM() {
     this.dealsResponse = new CustomResponse('SUCCESS', "Synchronization is in progress. This might take few minutes. Please wait...", true);
     this.referenceService.loading(this.httpRequestLoader, true);
     this.referenceService.loading(this.campaignRequestLoader,true);
@@ -1306,22 +1306,16 @@ export class ManageDealsComponent implements OnInit {
             this.showDeals();
           } else if (data.statusCode === 401 && data.message === "Expired Refresh Token") {
             this.referenceService.loading(this.httpRequestLoader, false);
-            this.dealsResponse = new CustomResponse('ERROR', "Your Salesforce Integration was expired. Please re-configure.", true);
-          }
-           else {
+            this.dealsResponse = new CustomResponse('ERROR', "Your Integration was expired. Please re-configure.", true);
+          } 
+          else {
             this.referenceService.loading(this.httpRequestLoader, false);
             this.dealsResponse = new CustomResponse('ERROR', "Synchronization Failed", true);
           }
         },
         error => {
-          this.referenceService.loading(this.httpRequestLoader, false);
-          let integrationType = (this.activeCRMDetails.type).charAt(0)+(this.activeCRMDetails.type).substring(1).toLocaleLowerCase();
-          if(integrationType == 'Salesforce' || integrationType == 'Halopsa'){
-            this.dealsResponse = new CustomResponse('ERROR', "Your "+integrationType+" integration is not valid. Re-configure with valid credentials ",true);
-          } else {
-            this.dealsResponse = new CustomResponse('ERROR', "Your "+integrationType+" integration is not valid. Re-configure with valid API Token",true);
-          }
-
+          this.referenceService.loading(this.httpRequestLoader, false)
+          this.dealsResponse = new CustomResponse('ERROR', "Your integration is not valid. Re-configure with valid API Token",true);
 
         },
         () => {
