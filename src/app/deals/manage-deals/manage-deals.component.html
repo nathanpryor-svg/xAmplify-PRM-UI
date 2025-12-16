@@ -173,7 +173,7 @@
 
                       <a *ngIf="(isVendorVersion && activeCRMDetails?.activeCRM && activeCRMDetails?.type != 'MARKETO') || (isPartnerVersion && (activeCRMDetails?.type == 'CONNECTWISE' || activeCRMDetails?.type == 'HALOPSA' || this.authenticationService.module.isPrmTeamMember))"
 
-                        (click)="syncLeadsWithActiveCRM()">
+                        (click)="syncDealsWithActiveCRM()">
                         <!-- <button class="btn btn-white salesforce-btn button neg-mar-top bgcolor-unset" -->
                         <button class="btn salesforce-btn button bgcolor-unset p0 btn-transitions mrgt-2 mrgt1-2"
                           data-toggle="tooltip" data-placement="bottom" title="Synchronize" translate>
@@ -181,8 +181,7 @@
                           <span class="btn Btn-Green transition text_pd-top1 pt-7">
                             <i class="fa fa-refresh" aria-hidden="true"></i>
                             <span *ngIf="activeCRMDetails?.type==='HUBSPOT'">HubSpot</span>
-                            <span *ngIf="activeCRMDetails?.type!='HUBSPOT'">{{ activeCRMDetails?.type | titlecase
-                              }}</span>
+                            <span *ngIf="activeCRMDetails?.type!='HUBSPOT'">xAmplify</span>
                           </span>
 
                         </button>
